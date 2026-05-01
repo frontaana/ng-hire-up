@@ -1,0 +1,39 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Изучить Angular HttpClient",
+      "description": "Разобраться с методами get, post, put, delete",
+      "status": "in-progress",
+      "priority": "high",
+      "category": "work"
+    },
+    {
+      "id": "2",
+      "title": "Настроить JSON Server",
+      "description": "Создать базу данных и скрипты запуска",
+      "status": "completed",
+      "priority": "medium",
+      "category": "work"
+    },
+    {
+      "id": "3",
+      "title": "Сделать крутой UI",
+      "description": "Добавить Angular Material или Tailwind",
+      "status": "todo",
+      "priority": "low",
+      "category": "work"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Иван Иванов",
+      "role": "admin"
+    }
+  ],
+  "settings": {
+    "theme": "dark",
+    "notifications": true
+  }
+}

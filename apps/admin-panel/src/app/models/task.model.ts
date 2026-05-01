@@ -1,4 +1,8 @@
+import { IdentifiedEntity } from './basic.models';
+
 export const RISK_I18N: string = 'Risk';
+
+export type Status = 'todo' | 'in-progress' | 'completed';
 
 export enum Categories {
   home = 'Home',
@@ -13,8 +17,10 @@ export enum Priority {
   high = 'High',
 }
 
-export interface ITask {
-  category: Categories;
-  title: string;
-  priority: Priority;
+export interface ITask extends IdentifiedEntity {
+  category?: Categories;
+  title?: string;
+  priority?: Priority;
+  status?: Status;
+  description?: string;
 }

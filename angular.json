@@ -11,23 +11,21 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
-          "configurations":{
+          "configurations": {
             "production": {
-              "outputHashing": "all" 
+              "outputHashing": "all"
             },
             "development": {
               "optimization": false,
               "sourceMap": true
             }
-          },  
+          },
           "options": {
             "outputPath": "dist/apps/admin-panel",
             "index": "apps/admin-panel/src/index.html",
             "browser": "apps/admin-panel/src/main.ts",
             "tsConfig": "apps/admin-panel/tsconfig.app.json",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "assets": [
               {
                 "glob": "**/*",
@@ -51,7 +49,10 @@
               "buildTarget": "admin-panel:build:development"
             }
           },
-          "defaultConfiguration": "development" 
+          "defaultConfiguration": "development",
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          }
         }
       }
     }
