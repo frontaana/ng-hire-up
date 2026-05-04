@@ -16,6 +16,7 @@
         "polyfills": ["zone.js"],
         "tsConfig": "apps/admin-panel/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
+        "publicDir": "apps/admin-panel/public",
         "assets": [
           "apps/admin-panel/src/assets",
           {
