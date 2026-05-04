@@ -30,7 +30,7 @@
               {
                 "glob": "**/*",
                 "input": "apps/admin-panel/public",
-                "output": "/assets"
+                "output": "/"
               }
             ],
             "styles": [
