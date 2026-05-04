@@ -2,17 +2,26 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [master] # Робот сработает при каждом пуше в master
+    branches: [master]
+  # Позволяет запускать деплой вручную из вкладки Actions
+  workflow_dispatch:
 
-# Разрешения для работы с GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Отменяет текущий запуск, если вы запушили новый код до завершения старого билда
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      # Явно заставляем экшены использовать Node.js 24
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -20,24 +29,25 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24 # Обновлено до актуальной версии
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci # Более надежная установка для серверов, чем npm install
+        run: npm ci
 
       - name: Build Angular Project
-        # Используем вашу команду с правильным base-href
+        # Обязательно проверьте путь dist/apps/admin-panel/browser, если используете новый Angular
         run: npx nx build admin-panel --prod --base-href /ng-highcharts-canvas/
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5 # Обновлено до v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Указываем путь к папке, которую собрал Nx
-          path: dist/apps/admin-panel
+          # ВАЖНО: Если в dist создается папка /browser, добавьте её в путь ниже
+          path: dist/apps/admin-panel/browser
 
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
