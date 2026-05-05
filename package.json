@@ -45,7 +45,7 @@
     "@nx/jest": "^20.0.0",
     "@nx/js": "20.0.0",
     "@nx/web": "20.0.0",
-    "@nx/workspace": "22.2.7",
+    "@nx/workspace": "20.0.0",
     "@schematics/angular": "^18.2.21",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
