@@ -1,4 +1,5 @@
 export enum Company {
+  none = 'none',
   V4Scale = 'v4scale',
   Nexign = 'nexign',
   Tinkoff = 'tinkoff',

@@ -1,0 +1,82 @@
+<p>article-form works!</p>
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  class="article-form mat-elevation-z2"
+>
+  <h2 class="form-title">Добавить новый вопрос</h2>
+
+  <div class="form-grid">
+    <!-- Вопрос -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Вопрос</mat-label>
+      <input
+        matInput
+        formControlName="question"
+        placeholder="Например: Как работает Event Loop?"
+      />
+      @if (form.controls.question.invalid && form.controls.question.touched) {
+      <mat-error>Вопрос обязателен (минимум 5 символов)</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Технология и Топик -->
+    <mat-form-field appearance="outline">
+      <mat-label>Технология</mat-label>
+      <mat-select formControlName="technology">
+        @for (tech of technologies; track tech) {
+        <mat-option [value]="tech">{{ tech }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Раздел (Topic)</mat-label>
+      <input matInput formControlName="topic" placeholder="eventloop" />
+    </mat-form-field>
+
+    <!-- Компания и Сложность -->
+    <mat-form-field appearance="outline">
+      <mat-label>Компания</mat-label>
+      <mat-select formControlName="company">
+        @for (comp of companies; track comp) {
+        <mat-option [value]="comp">{{ comp }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Сложность</mat-label>
+      <mat-select formControlName="difficulty">
+        @for (diff of difficulties; track diff) {
+        <mat-option [value]="diff">{{ diff }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Описание и Ответ -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Краткое описание</mat-label>
+      <input matInput formControlName="description" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Ответ</mat-label>
+      <textarea matInput formControlName="answer" rows="4"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="form-actions">
+    <button mat-stroked-button type="button" (click)="form.reset()">
+      Очистить
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="form.invalid"
+    >
+      <mat-icon>add</mat-icon> Сохранить
+    </button>
+  </div>
+</form>

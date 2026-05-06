@@ -1,1 +1,15 @@
-<p>knowledge-base works!</p>
+<div class="kb-wrapper">
+  <lib-article-form />
+
+  <div class="content-section">
+    <lib-article-filter />
+
+    @if (store.isLoading()) {
+    <div class="loader">
+      <mat-spinner diameter="50" />
+    </div>
+    } @else {
+    <lib-article-list [articles]="store.filteredArticles()" />
+    }
+  </div>
+</div>

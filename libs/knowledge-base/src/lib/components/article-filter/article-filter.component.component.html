@@ -1,0 +1,18 @@
+<div class="filter-container">
+  <mat-chip-listbox (change)="onTechChange($event)">
+    <mat-chip-option [selected]="true" [value]="null">Все</mat-chip-option>
+    @for (tech of technologies; track tech) {
+    <mat-chip-option [value]="tech">{{ tech }}</mat-chip-option>
+    }
+  </mat-chip-listbox>
+
+  <mat-form-field appearance="fill" class="diff-filter">
+    <mat-label>Сложность</mat-label>
+    <mat-select (selectionChange)="onDiffChange($event)">
+      <mat-option [value]="null">Любая</mat-option>
+      <mat-option value="Junior">Junior</mat-option>
+      <mat-option value="Middle">Middle</mat-option>
+      <mat-option value="Senior">Senior</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
