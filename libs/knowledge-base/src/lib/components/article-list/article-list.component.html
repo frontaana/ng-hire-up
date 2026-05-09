@@ -1,7 +1,19 @@
-<div class="articles-list">
-  <!-- @for (article of articles; track article.id) { -->
-  <lib-article-card></lib-article-card>
-  <!-- } @empty { -->
-  <div class="empty-state">Вопросы не найдены</div>
-  <!-- } -->
+<div class="list-page-container">
+  <!-- Компонент фильтрации -->
+  <lib-article-filter></lib-article-filter>
+
+  @if (store.isLoading()) {
+  <div class="loader-container">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+  } @else {
+  <div class="articles-list">
+    <!-- Берем массив из реактивного computed-сигнала стора -->
+    @for (article of store.filteredArticles(); track article.id) {
+    <lib-article-card [article]="article"></lib-article-card>
+    } @empty {
+    <div class="empty-state">Вопросы не найдены</div>
+    }
+  </div>
+  }
 </div>

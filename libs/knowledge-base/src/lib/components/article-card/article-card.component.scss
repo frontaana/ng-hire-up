@@ -1,0 +1,90 @@
+.article-item {
+  border-radius: 8px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+
+  .tech-badge {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-right: 12px;
+    display: inline-block;
+  }
+
+  mat-panel-description {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-content: flex-end;
+    color: #757575;
+
+    mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .mat-expansion-panel-header-title {
+    flex-basis: auto;
+  }
+}
+
+.article-content {
+  padding-top: 8px;
+
+  .description {
+    color: #616161;
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  .answer-box {
+    background-color: #fafafa;
+    border-left: 4px solid #3f51b5;
+    padding: 12px 16px;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 16px;
+
+    strong {
+      color: #3f51b5;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    p {
+      margin: 0;
+      color: #212121;
+      line-height: 1.5;
+    }
+  }
+
+  .tags {
+    margin-top: 8px;
+
+    .topic-chip {
+      background-color: #f5f5f5;
+      color: #424242;
+    }
+
+    // Стилизация чипсов в зависимости от сложности
+    mat-chip.junior {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    mat-chip.middle {
+      background-color: #fff3e0;
+      color: #ef6c00;
+    }
+
+    mat-chip.senior {
+      background-color: #ffebee;
+      color: #c62828;
+    }
+  }
+}

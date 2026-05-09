@@ -1,23 +1,23 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatIconModule } from '@angular/material/icon';
+import { Component, inject } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { KnowledgeBaseStore } from '../../store/knowledge-base.store';
 import { ArticleCardComponent } from '../article-card/article-card.component';
+import { ArticleFilterComponent } from '../article-filter/article-filter.component';
 
 @Component({
   selector: 'lib-article-list',
   standalone: true,
   imports: [
-    ArticleCardComponent,
     CommonModule,
-    MatExpansionModule,
-    MatChipsModule,
-    MatIconModule,
+    ArticleFilterComponent,
+    ArticleCardComponent,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './article-list.component.html',
   styleUrl: './article-list.component.scss',
 })
 export class ArticleListComponent {
-  // @Input({ required: true }) articles: Article[] = [];
+  // Внедряем общий стор, созданный провайдером роутинга либы
+  readonly store = inject(KnowledgeBaseStore);
 }

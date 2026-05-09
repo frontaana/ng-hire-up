@@ -1,25 +1,26 @@
 <mat-expansion-panel class="article-item">
   <mat-expansion-panel-header>
     <mat-panel-title>
-      <span class="tech-badge">{{ 'article.technology' }}</span>
-      {{ 'article.question' }}
+      <span class="tech-badge">{{ article().technology }}</span>
+      {{ article().title }}
     </mat-panel-title>
     <mat-panel-description>
-      <mat-icon>business</mat-icon> {{ 'article.company' }}
+      <mat-icon>business</mat-icon> {{ article().company }}
     </mat-panel-description>
   </mat-expansion-panel-header>
 
   <div class="article-content">
-    <p class="description">{{ 'article.description' }}</p>
+    <p>{{ article().question }}</p>
+    <p class="description">{{ article().description }}</p>
     <div class="answer-box">
       <strong>Ответ:</strong>
-      <p>{{ 'article.answer' }}</p>
+      <p>{{ article().answer }}</p>
     </div>
     <div class="tags">
       <mat-chip-set>
-        <mat-chip class="topic-chip">#{{ 'article.topic' }}</mat-chip>
-        <mat-chip [class]="'article.difficulty?.toLowerCase()'">{{
-          'article.difficulty'
+        <mat-chip class="topic-chip">#{{ article().topic }}</mat-chip>
+        <mat-chip [class]="article().difficulty?.toLowerCase()">{{
+          article().difficulty
         }}</mat-chip>
       </mat-chip-set>
     </div>

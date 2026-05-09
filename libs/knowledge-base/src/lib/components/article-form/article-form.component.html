@@ -8,14 +8,14 @@
   <div class="form-grid">
     <!-- Вопрос -->
     <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Вопрос</mat-label>
+      <mat-label>Вопрос кратко</mat-label>
       <input
         matInput
-        formControlName="question"
+        formControlName="title"
         placeholder="Например: Как работает Event Loop?"
       />
-      @if (form.controls.question.invalid && form.controls.question.touched) {
-      <mat-error>Вопрос обязателен (минимум 5 символов)</mat-error>
+      @if (form.controls.title.invalid && form.controls.title.touched) {
+      <mat-error>Вопрос кратко обязателен (минимум 5 символов)</mat-error>
       }
     </mat-form-field>
 
@@ -54,6 +54,11 @@
     </mat-form-field>
 
     <!-- Описание и Ответ -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Вопрос полно</mat-label>
+      <input matInput formControlName="question" />
+    </mat-form-field>
+
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Доп описание</mat-label>
       <input matInput formControlName="description" />

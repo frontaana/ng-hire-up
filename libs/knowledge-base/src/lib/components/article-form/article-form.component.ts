@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import {
   FormControl,
+  FormGroupDirective,
   NonNullableFormBuilder,
   ReactiveFormsModule,
   Validators,
@@ -21,6 +22,7 @@ import {
 import { KnowledgeBaseStore } from '../../store/knowledge-base.store';
 
 interface ArticleForm {
+  title: FormControl<string>;
   question: FormControl<string>;
   answer: FormControl<string>;
   description: FormControl<string>;
@@ -49,11 +51,17 @@ export class ArticleFormComponent {
   private readonly fb = inject(NonNullableFormBuilder); // NonNullableFormBuilder
   readonly store = inject(KnowledgeBaseStore);
 
+  // Получаем доступ к директиве формы из шаблона
+  @ViewChild(FormGroupDirective) formDirective!: FormGroupDirective;
+
   companies = Object.values(Company);
   technologies = Object.values(Technology);
   difficulties = Object.values(Difficulty);
 
   public form = this.fb.group<ArticleForm>({
+    title: this.fb.control('', {
+      validators: [Validators.required],
+    }),
     question: this.fb.control('', {
       validators: [Validators.required, Validators.minLength(5)],
     }),
@@ -74,10 +82,15 @@ export class ArticleFormComponent {
   onSubmit(): void {
     if (this.form.valid) {
       this.store.addArticle(this.form.getRawValue());
+
       this.form.reset({
         technology: Technology.JS,
         difficulty: Difficulty.Junior,
       });
+
+      if (this.formDirective) {
+        this.formDirective.resetForm();
+      }
     }
   }
 }

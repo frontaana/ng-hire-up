@@ -1,0 +1,65 @@
+.filter-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; // Для корректного переноса на мобильных устройствах
+  gap: 16px;
+  padding: 12px 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 16px;
+
+  .tech-chips-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .filter-label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #616161;
+    }
+  }
+
+  // Стилизация непосредственно выпадающего списка
+  .diff-filter {
+    width: 180px; // Ограничиваем ширину селекта
+
+    // Убираем лишние дефолтные отступы Angular Material снизу, 
+    // чтобы селект идеально отцентровался по вертикали с чипсами
+    ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+      display: none;
+    }
+
+    // Делаем высоту инпута чуть более компактной
+    ::ng-deep .mat-mdc-text-field-wrapper {
+      padding-top: 0;
+      padding-bottom: 0;
+      background-color: #fafafa;
+    }
+
+    ::ng-deep .mat-mdc-form-field-flex {
+      height: 48px;
+      align-items: center;
+    }
+  }
+}
+
+// Адаптив: на экранах меньше 600px выстраиваем фильтры друг под друга
+@media (max-width: 600px) {
+  .filter-row {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .tech-chips-group {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .diff-filter {
+      width: 100%; // На мобилках растягиваем на всю ширину
+    }
+  }
+}
