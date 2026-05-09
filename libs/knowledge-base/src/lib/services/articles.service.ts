@@ -11,8 +11,8 @@ export class ArticlesService extends ItemsService {
 
   /**
    * Динамически формирует URL в зависимости от окружения
-   */
-  private getTargetUrl(): string {
+   * 
+   *   private getTargetUrl(): string {
     const isFirebase = this.baseUrl.includes('firebaseio.com');
 
     if (isFirebase) {
@@ -24,15 +24,13 @@ export class ArticlesService extends ItemsService {
       return `${this.baseUrl}/articles`;
     }
   }
+   */
 
   // 1. Получение всех статей
   getArticles(): Observable<Article[]> {
-    const url = this.getTargetUrl();
-    console.log('ArticlesService getArticles URL:', url);
-
     // Вызываем унаследованный метод getItems и передаем сформированный URL
     // Добавляем маппинг на случай, если Firebase вернул объект, а не массив
-    return this.getItems(url).pipe(
+    return this.getItems(`${this.baseUrl}/articles`).pipe(
       map((res: any) => {
         if (!res) return [];
 
@@ -56,9 +54,7 @@ export class ArticlesService extends ItemsService {
 
   // 2. Добавление новой статьи
   addArticle(article: Omit<Article, 'id'>): Observable<Article> {
-    const url = this.getTargetUrl();
-    console.log('ArticlesService addArticle URL:', url);
-    return this.addItem(url, article);
+    return this.addItem(`${this.baseUrl}/articles`, article);
   }
 
   // 3. Удаление статьи (если понадобится в админке)
