@@ -4,35 +4,16 @@ import { map, Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ItemsService {
-  /**
-   * localStorage
-   */
-  // private readonly STORAGE_KEY = 'tasks_data';
-  // tasks = signal<ITask[]>(this.loadTasks());
-  // private loadTasks(): ITask[] {
-  //   const data = localStorage.getItem(this.STORAGE_KEY);
-  //   return data ? JSON.parse(data) : [];
-  // }
-  // addTask(task: ITask) {
-  //   this.tasks.update((prev) => {
-  //     const updated = [...prev, task];
-  //     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(updated));
-  //     return updated;
-  //   });
-  // }
-
   private http = inject(HttpClient);
-  // Используем путь через прокси /api
-  // private readonly TASKS_URL = `${environment.apiBaseUrl}/tasks`;
 
-  // Получить все задачи (READ)
-  getTasks(url: string): Observable<any[]> {
+  getItems(url: string): Observable<any[]> {
+    console.log('ItemsService getItems', url);
     return this.http.get<any[]>(url).pipe(
       map((res) => {
         if (!res) return [];
 
         // 1. Превращаем в массив (универсально для Firebase и json-server)
-        const rawTasks = Array.isArray(res)
+        const rawItems = Array.isArray(res)
           ? res
           : Object.keys(res).map((key) => ({
               ...(res[key] as object),
@@ -41,7 +22,7 @@ export class ItemsService {
 
         // 2. ЗАЧИСТКА: убираем всё, что не является объектом задачи
         // (удаляем строку $schema и возможные null)
-        return rawTasks.filter(
+        return rawItems.filter(
           (item) =>
             item && typeof item === 'object' && !item.hasOwnProperty('$schema')
         ) as any[];
@@ -49,9 +30,8 @@ export class ItemsService {
     );
   }
 
-  // Добавить задачу (CREATE)
-  addTask(url: string, item: any): Observable<any> {
-    console.log('addTask', item);
+  addItem(url: string, item: any): Observable<any> {
+    console.log('addItem', item);
 
     return this.http.post<any>(url, item).pipe(
       map((res) => {
@@ -66,13 +46,12 @@ export class ItemsService {
     );
   }
 
-  // Удалить задачу (DELETE)
-  deleteTask(url: string, id: string): Observable<void> {
+  deleteItem(url: string, id: string): Observable<void> {
     return this.http.delete<void>(`${url}/${id}`);
   }
 
   // Обновить задачу (UPDATE)
-  updateTask(url: string, item: any): Observable<any> {
+  updateItem(url: string, item: any): Observable<any> {
     return this.http.put<any>(`${url}/${item.id}`, item);
   }
 }

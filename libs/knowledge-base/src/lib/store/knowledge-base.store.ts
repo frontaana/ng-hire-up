@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { computed, inject } from '@angular/core';
 import {
   patchState,
@@ -7,8 +6,11 @@ import {
   withMethods,
   withState,
 } from '@ngrx/signals';
-import { firstValueFrom } from 'rxjs';
+import { rxMethod } from '@ngrx/signals/rxjs-interop'; // Обязательно импортируем этот хелпер
+import { pipe, switchMap, tap } from 'rxjs';
+
 import { Article, Difficulty, Technology } from '../models/article';
+import { ArticlesService } from '../services/articles.service';
 
 export const KnowledgeBaseStore = signalStore(
   { providedIn: 'root' },
@@ -29,26 +31,52 @@ export const KnowledgeBaseStore = signalStore(
       );
     }),
   })),
-  withMethods((store, http = inject(HttpClient)) => ({
-    async loadAll() {
-      patchState(store, { isLoading: true });
-      try {
-        // Для GH Pages: если API нет, можно грузить из assets/db.json
-        const data = await firstValueFrom(
-          http.get<Article[]>('http://localhost:3000/articles')
-        );
-        patchState(store, { articles: data, isLoading: false });
-      } catch {
-        patchState(store, { isLoading: false });
-      }
-    },
-    updateFilter(technology: Technology | null, difficulty: Difficulty | null) {
-      patchState(store, { filter: { technology, difficulty } });
-    },
-    addArticle(article: Omit<Article, 'id'>) {
-      const newArticle = { ...article, id: Date.now().toString() } as Article;
-      patchState(store, { articles: [...store.articles(), newArticle] });
-      // Здесь был бы POST запрос, но для GH Pages просто обновляем стейт
-    },
-  }))
+  withMethods((store, service = inject(ArticlesService)) => {
+    // 1. Сначала объявляем rxMethod как независимую константу
+    const loadAll = rxMethod<void>(
+      pipe(
+        tap(() => patchState(store, { isLoading: true })),
+        switchMap(() =>
+          service.getArticles().pipe(
+            tap({
+              next: (data) =>
+                patchState(store, { articles: data, isLoading: false }),
+              error: () => patchState(store, { isLoading: false }),
+            })
+          )
+        )
+      )
+    );
+
+    // 2. Возвращаем объект со всеми методами наружу
+    return {
+      updateFilter(
+        technology: Technology | null,
+        difficulty: Difficulty | null
+      ) {
+        patchState(store, { filter: { technology, difficulty } });
+      },
+
+      // Экспортируем наш метод загрузки
+      loadAll,
+
+      // Внутри addArticle теперь можно безопасно вызывать loadAll
+      addArticle: rxMethod<Omit<Article, 'id'>>(
+        pipe(
+          tap(() => patchState(store, { isLoading: true })),
+          switchMap((newArticle) =>
+            service.addArticle(newArticle).pipe(
+              tap({
+                next: () => {
+                  // Вызываем локальную константу, TypeScript гарантированно увидит тип
+                  loadAll();
+                },
+                error: () => patchState(store, { isLoading: false }),
+              })
+            )
+          )
+        )
+      ),
+    };
+  })
 );

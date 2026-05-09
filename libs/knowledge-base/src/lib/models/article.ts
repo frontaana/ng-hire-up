@@ -1,3 +1,5 @@
+import { IdentifiedEntity } from '@ng-highcharts-canvas/shared';
+
 export enum Company {
   none = 'none',
   V4Scale = 'v4scale',
@@ -40,8 +42,9 @@ export enum Difficulty {
 // Объединяем все возможные топики в один тип
 export type ArticleTopic = JSTopic | AngularTopic | string;
 
-export interface Article {
+export interface Article extends IdentifiedEntity {
   // extends IdentifiedEntity
+  title: string;
   question: string;
   answer: string;
   description: string;
