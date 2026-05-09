@@ -43,6 +43,10 @@
       height: 48px;
       align-items: center;
     }
+
+    ::ng-deep .mat-mdc-floating-label {
+      top: calc(var(--mat-form-field-container-height) / 2 + -5px);
+    }
   }
 }
 

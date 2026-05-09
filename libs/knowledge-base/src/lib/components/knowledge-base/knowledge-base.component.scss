@@ -1,19 +1,53 @@
-.kb-wrapper {
-  padding: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.content-section {
-  margin-top: 40px;
-}
-
-.loader {
+.header {
   display: flex;
-  justify-content: center;
-  padding: 50px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  overflow: hidden; // Сам тулбар жестко зафиксирован и не скроллится
 }
 
-.spacer {
-  flex: 1 1 auto; // Расталкивает логотип и настройки по краям
+.logo {
+  margin: 0;
+  white-space: nowrap; // Логотип не должен сжиматься
+  flex-shrink: 0;
+}
+
+// Контейнер-ограничитель для скролла
+.menu-items-scroll-container {
+  flex: 1; // Занимает всё доступное пространство между логотипом и настройками
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-color: rgb(127, 255, 0);
+  border-radius: var(--mdc-text-button-container-shape, var(--mat-app-corner-full));
+  padding: 0 4px;
+}
+
+// Cкролл
+.scrollable-menu {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto; // Включаем горизонтальный скролл
+  overflow-y: hidden;
+  white-space: nowrap; // Запрещаем кнопкам переноситься на новую строку
+  width: 100%;
+  padding: 4px 0;
+
+  // Включаем плавный скролл на тач-экранах и мобилках
+  -webkit-overflow-scrolling: touch;
+
+  // Прячем системный скроллбар, чтобы он не портил дизайн тулбара
+  &::-webkit-scrollbar {
+    display: none;
+    /* Safari и Chrome */
+  }
+
+  -ms-overflow-style: none;
+  /* IE и Edge */
+  scrollbar-width: none;
+  /* Firefox */
+
+  a[mat-button] {
+    flex-shrink: 0; // Кнопки сохраняют свой оригинальный размер и не сжимаются
+  }
 }

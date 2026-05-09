@@ -1,24 +1,30 @@
 <mat-toolbar color="primary" class="header">
   <h2 class="logo">Knowledge base</h2>
 
-  <div class="menu-items">
-    <a
-      mat-button
-      routerLink="list"
-      routerLinkActive="active-link"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      <mat-icon>list</mat-icon>
-      Общий список статей
-    </a>
-
-    <a mat-button routerLink="add" routerLinkActive="active-link">
-      <mat-icon>add_circle</mat-icon>
-      Создать статью
-    </a>
+  <!-- Обертка для кнопок, которая будет скроллиться -->
+  <div class="menu-items-scroll-container">
+    <div class="scrollable-menu">
+      <a
+        mat-button
+        routerLink="list"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <mat-icon>list</mat-icon> Общий список статей
+      </a>
+      <a mat-button routerLink="add" routerLinkActive="active-link">
+        <mat-icon>add_circle</mat-icon> Создать статью
+      </a>
+      <!-- Дополнительные кнопки для теста скролла -->
+      <!-- <a mat-button routerLink="favorites"
+        ><mat-icon>star</mat-icon> Избранное</a
+      >
+      <a mat-button routerLink="history"
+        ><mat-icon>history</mat-icon> История</a
+      >
+      <a mat-button routerLink="tags"><mat-icon>local_offer</mat-icon> Теги</a> -->
+    </div>
   </div>
-
-  <span class="spacer"></span>
 
   <button mat-icon-button title="Настройки">
     <mat-icon>settings</mat-icon>

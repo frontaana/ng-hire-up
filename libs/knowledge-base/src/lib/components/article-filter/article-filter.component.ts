@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { MatChipListboxChange, MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
-import { Technology } from '../../models/article';
+import { Difficulty, Technology } from '../../models/article';
 import { KnowledgeBaseStore } from '../../store/knowledge-base.store';
 
 @Component({
@@ -17,6 +17,7 @@ export class ArticleFilterComponent {
   readonly store = inject(KnowledgeBaseStore);
 
   technologies = Object.values(Technology);
+  difficulties = Object.values(Difficulty);
 
   onTechChange(event: MatChipListboxChange): void {
     // Обновляем только технологию, сохраняя текущую сложность

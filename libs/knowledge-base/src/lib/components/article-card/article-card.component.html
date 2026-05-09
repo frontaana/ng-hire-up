@@ -2,14 +2,11 @@
   <mat-expansion-panel-header>
     <mat-panel-title>
       <span class="tech-badge">{{ article().technology }}</span>
-      <div class="tags">
-        <mat-chip-set>
-          <mat-chip class="topic-chip">#{{ article().topic }}</mat-chip>
-          <mat-chip [class]="article().difficulty?.toLowerCase()">{{
-            article().difficulty
-          }}</mat-chip>
-        </mat-chip-set>
-      </div>
+      <mat-chip-set>
+        <mat-chip class="topic-chip text-ellipsis"
+          >#{{ article().topic }}</mat-chip
+        >
+      </mat-chip-set>
     </mat-panel-title>
     <mat-panel-description>
       <mat-icon>business</mat-icon> {{ article().company }}
@@ -22,6 +19,13 @@
     <div class="answer-box">
       <strong>Ответ:</strong>
       <p>{{ article().answer }}</p>
+    </div>
+    <div class="tags">
+      <mat-chip-set>
+        <mat-chip [ngClass]="article().difficulty?.toLowerCase()">{{
+          article().difficulty
+        }}</mat-chip>
+      </mat-chip-set>
     </div>
   </div>
 </mat-expansion-panel>

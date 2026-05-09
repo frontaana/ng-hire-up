@@ -65,26 +65,30 @@
 
   .tags {
     margin-top: 8px;
+  }
+}
 
-    .topic-chip {
-      background-color: #f5f5f5;
-      color: #424242;
-    }
+mat-chip-set {
+  .topic-chip {
+    max-width: 120px;
+    background-color: #f5f5f5;
+    color: #424242;
+  }
 
-    // Стилизация чипсов в зависимости от сложности
-    mat-chip.junior {
-      background-color: #e8f5e9;
-      color: #2e7d32;
-    }
 
-    mat-chip.middle {
-      background-color: #fff3e0;
-      color: #ef6c00;
-    }
+  // Стилизация чипсов в зависимости от сложности
+  mat-chip.junior {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+  }
 
-    mat-chip.senior {
-      background-color: #ffebee;
-      color: #c62828;
-    }
+  mat-chip.middle {
+    background-color: #fff3e0;
+    color: #ef6c00;
+  }
+
+  mat-chip.senior {
+    background-color: #ffebee;
+    color: #c62828;
   }
 }

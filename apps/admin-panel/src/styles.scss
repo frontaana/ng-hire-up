@@ -36,3 +36,9 @@ app-root {
   display: block;
   height: 100%;
 }
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

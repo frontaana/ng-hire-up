@@ -13,9 +13,9 @@
     <mat-label>Сложность</mat-label>
     <mat-select (selectionChange)="onDiffChange($event)" defaultValue="null">
       <mat-option [value]="null">Любая</mat-option>
-      <mat-option value="Junior">Junior</mat-option>
-      <mat-option value="Middle">Middle</mat-option>
-      <mat-option value="Senior">Senior</mat-option>
+      @for (diff of difficulties; track diff) {
+      <mat-option [value]="diff">{{ diff }}</mat-option>
+      }
     </mat-select>
   </mat-form-field>
 </div>
