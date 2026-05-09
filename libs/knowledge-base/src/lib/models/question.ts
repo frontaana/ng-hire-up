@@ -40,22 +40,21 @@ export enum Difficulty {
 }
 
 // Объединяем все возможные топики в один тип
-export type ArticleTopic = JSTopic | AngularTopic | string;
+export type QuestionTopic = JSTopic | AngularTopic | string;
 
-export interface Article extends IdentifiedEntity {
-  title?: string;
-  question: string;
+export interface Question extends IdentifiedEntity {
+  title: string;
   answer: string;
   description: string;
   company: Company;
   technology: Technology;
-  topic: ArticleTopic;
+  topic: QuestionTopic;
   difficulty?: Difficulty;
 }
 
 /**
- * http://localhost:3000/articles?technology=JavaScript — отфильтрует только JS
- * http://localhost:3000/articles?difficulty=Middle — только средний уровень
+ * http://localhost:3000/questions?technology=JavaScript — отфильтрует только JS
+ * http://localhost:3000/questions?difficulty=Middle — только средний уровень
  */
 
 /**

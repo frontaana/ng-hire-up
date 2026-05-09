@@ -1,7 +1,7 @@
 <form
   [formGroup]="form"
   (ngSubmit)="onSubmit()"
-  class="article-form mat-elevation-z2"
+  class="question-form mat-elevation-z2"
 >
   <h2 class="form-title">Добавить новый вопрос</h2>
 
@@ -45,10 +45,10 @@
       <mat-label>Вопрос</mat-label>
       <input
         matInput
-        formControlName="question"
+        formControlName="title"
         placeholder="Например: Как работает Event Loop?"
       />
-      @if (form.controls.question.invalid && form.controls.question.touched) {
+      @if (form.controls.title.invalid && form.controls.title.touched) {
       <mat-error>Вопрос обязателен (минимум 5 символов)</mat-error>
       }
     </mat-form-field>

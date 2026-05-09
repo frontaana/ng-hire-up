@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "include": [
     "src/**/*.ts",
-    "../../libs/knowledge-base/src/lib/knowledge-base/models/article.ts",
+    "../../libs/knowledge-base/src/lib/knowledge-base/models/question.ts",
     "../../libs/tracker/src/lib/models/task.model.ts",
     "../../libs/shared/src/lib/models/basic.models.ts",
     "../../libs/shared/src/lib/services/items.service.ts"

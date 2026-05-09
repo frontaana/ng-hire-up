@@ -1,16 +1,16 @@
 <div class="list-page-container">
   <!-- Компонент фильтрации -->
-  <lib-article-filter></lib-article-filter>
+  <lib-question-filter></lib-question-filter>
 
   @if (store.isLoading()) {
   <div class="loader-container">
     <mat-spinner diameter="50"></mat-spinner>
   </div>
   } @else {
-  <div class="articles-list">
+  <div class="questions-list">
     <!-- Берем массив из реактивного computed-сигнала стора -->
-    @for (article of store.filteredArticles(); track article.id) {
-    <lib-article-card [article]="article"></lib-article-card>
+    @for (question of store.filteredQuestions(); track question.id) {
+    <lib-question-card [question]="question"></lib-question-card>
     } @empty {
     <div class="empty-state">Вопросы не найдены</div>
     }

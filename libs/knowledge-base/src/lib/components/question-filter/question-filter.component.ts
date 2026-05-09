@@ -3,17 +3,17 @@ import { Component, inject } from '@angular/core';
 import { MatChipListboxChange, MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
-import { Difficulty, Technology } from '../../models/article';
+import { Difficulty, Technology } from '../../models/question';
 import { KnowledgeBaseStore } from '../../store/knowledge-base.store';
 
 @Component({
-  selector: 'lib-article-filter',
+  selector: 'lib-question-filter',
   standalone: true,
   imports: [CommonModule, MatChipsModule, MatFormFieldModule, MatSelectModule],
-  templateUrl: './article-filter.component.html',
-  styleUrl: './article-filter.component.scss',
+  templateUrl: './question-filter.component.html',
+  styleUrl: './question-filter.component.scss',
 })
-export class ArticleFilterComponent {
+export class QuestionFilterComponent {
   readonly store = inject(KnowledgeBaseStore);
 
   technologies = Object.values(Technology);

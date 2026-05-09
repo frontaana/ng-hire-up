@@ -14,25 +14,25 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 import {
-  ArticleTopic,
   Company,
   Difficulty,
+  QuestionTopic,
   Technology,
-} from '../../models/article';
+} from '../../models/question';
 import { KnowledgeBaseStore } from '../../store/knowledge-base.store';
 
-interface ArticleForm {
-  question: FormControl<string>;
+interface QuestionForm {
+  title: FormControl<string>;
   answer: FormControl<string>;
   description: FormControl<string>;
   company: FormControl<Company>;
   technology: FormControl<Technology>;
-  topic: FormControl<ArticleTopic>;
+  topic: FormControl<QuestionTopic>;
   difficulty: FormControl<Difficulty>;
 }
 
 @Component({
-  selector: 'lib-article-form',
+  selector: 'lib-question-form',
   standalone: true,
   imports: [
     CommonModule,
@@ -43,10 +43,10 @@ interface ArticleForm {
     MatIconModule,
     ReactiveFormsModule,
   ],
-  templateUrl: './article-form.component.html',
-  styleUrl: './article-form.component.scss',
+  templateUrl: './question-form.component.html',
+  styleUrl: './question-form.component.scss',
 })
-export class ArticleFormComponent {
+export class QuestionFormComponent {
   private readonly fb = inject(NonNullableFormBuilder); // NonNullableFormBuilder
   readonly store = inject(KnowledgeBaseStore);
 
@@ -57,8 +57,8 @@ export class ArticleFormComponent {
   technologies = Object.values(Technology);
   difficulties = Object.values(Difficulty);
 
-  public form = this.fb.group<ArticleForm>({
-    question: this.fb.control('', {
+  public form = this.fb.group<QuestionForm>({
+    title: this.fb.control('', {
       validators: [Validators.required, Validators.minLength(5)],
     }),
     answer: this.fb.control('', {
@@ -77,7 +77,7 @@ export class ArticleFormComponent {
 
   onSubmit(): void {
     if (this.form.valid) {
-      this.store.addArticle(this.form.getRawValue());
+      this.store.addQuestion(this.form.getRawValue());
 
       this.form.reset({
         technology: Technology.JS,

@@ -1,9 +1,8 @@
 {
-  "articles": [
+  "questions": [
     {
       "id": "1",
-      "title": "",
-      "question": "В каком порядке выведутся логи: console.log('1'); setTimeout(() => console.log('2'), 0); Promise.resolve().then(() => console.log('3')); console.log('4');",
+      "title": "В каком порядке выведутся логи: console.log('1'); setTimeout(() => console.log('2'), 0); Promise.resolve().then(() => console.log('3')); console.log('4');",
       "answer": "1, 4, 3, 2",
       "description": "Классическая задача на понимание Event Loop: сначала синхронный код, затем микрозадачи (Promise), затем макрозадачи (setTimeout).",
       "company": "none",
@@ -13,8 +12,7 @@
     },
     {
       "id": "2",
-      "title": "",
-      "question": "В чем разница между Interface и Type в TypeScript?",
+      "title": "В чем разница между Interface и Type в TypeScript?",
       "answer": "Interface поддерживает декларативное слияние (merging), а Type — нет. Type более гибок для создания алиасов примитивов, объединений (unions) и кортежей.",
       "description": "Базовый вопрос по архитектуре типов в TS.",
       "company": "none",
@@ -24,8 +22,7 @@
     },
     {
       "id": "3",
-      "title": "",
-      "question": "Что такое Angular Signals и чем они отличаются от RxJS Subject?",
+      "title": "Что такое Angular Signals и чем они отличаются от RxJS Subject?",
       "answer": "Signals — это синхронное реактивное состояние с автоматическим отслеживанием зависимостей (glitch-free). В отличие от RxJS, им не нужна явная отписка, и они всегда имеют значение.",
       "description": "Вопрос по новым фичам Angular 16/17/18.",
       "company": "none",
@@ -35,8 +32,7 @@
     },
     {
       "id": "4",
-      "title": "",
-      "question": "Как работает механизм provide/inject в Angular?",
+      "title": "Как работает механизм provide/inject в Angular?",
       "answer": "Это альтернатива инъекции через конструктор, позволяющая получать зависимости вне классов (например, в функциях-гардах или внутри других функций), используя InjectionToken.",
       "description": "Вопрос на понимание Dependency Injection.",
       "company": "none",
@@ -46,8 +42,7 @@
     },
     {
       "id": "5",
-      "title": "",
-      "question": "Что такое Blue-Green deployment?",
+      "title": "Что такое Blue-Green deployment?",
       "answer": "Метод релиза, при котором создаются две идентичные среды: Blue (текущая версия) и Green (новая). Трафик переключается на Green только после успешного тестирования.",
       "description": "Вопрос по стратегии деплоя в CICD.",
       "company": "none",
@@ -56,8 +51,7 @@
       "difficulty": "Senior"
     },
     {
-      "title": "",
-      "question": "Перечислите типы данных в JS согласно последней документации?",
+      "title": "Перечислите типы данных в JS согласно последней документации?",
       "answer": "8 типов",
       "description": "",
       "company": "none",

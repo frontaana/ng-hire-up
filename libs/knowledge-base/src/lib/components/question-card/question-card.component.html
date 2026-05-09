@@ -1,0 +1,31 @@
+<mat-expansion-panel class="question-item">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <span class="tech-badge">{{ question().technology }}</span>
+      <mat-chip-set>
+        <mat-chip class="topic-chip text-ellipsis"
+          >#{{ question().topic }}</mat-chip
+        >
+      </mat-chip-set>
+    </mat-panel-title>
+    <mat-panel-description>
+      <mat-icon>business</mat-icon> {{ question().company }}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <div class="question-content">
+    <p>{{ question().title }}</p>
+    <p class="description">{{ question().description }}</p>
+    <div class="answer-box">
+      <strong>Ответ:</strong>
+      <p>{{ question().answer }}</p>
+    </div>
+    <div class="tags">
+      <mat-chip-set>
+        <mat-chip [ngClass]="question().difficulty?.toLowerCase()">{{
+          question().difficulty
+        }}</mat-chip>
+      </mat-chip-set>
+    </div>
+  </div>
+</mat-expansion-panel>

@@ -9,38 +9,38 @@ import {
 import { rxMethod } from '@ngrx/signals/rxjs-interop'; // Обязательно импортируем этот хелпер
 import { pipe, switchMap, tap } from 'rxjs';
 
-import { Article, Difficulty, Technology } from '../models/article';
-import { ArticlesService } from '../services/articles.service';
+import { Difficulty, Question, Technology } from '../models/question';
+import { QuestionsService } from '../services/questions.service';
 
 export const KnowledgeBaseStore = signalStore(
   { providedIn: 'root' },
   withState({
-    articles: [] as Article[],
+    questions: [] as Question[],
     isLoading: false,
     filter: {
       technology: null as Technology | null,
       difficulty: null as Difficulty | null,
     },
   }),
-  withComputed(({ articles, filter }) => ({
-    filteredArticles: computed(() => {
+  withComputed(({ questions, filter }) => ({
+    filteredQuestions: computed(() => {
       const t = filter.technology();
       const d = filter.difficulty();
-      return articles().filter(
+      return questions().filter(
         (a) => (!t || a.technology === t) && (!d || a.difficulty === d)
       );
     }),
   })),
-  withMethods((store, service = inject(ArticlesService)) => {
+  withMethods((store, service = inject(QuestionsService)) => {
     // 1. Сначала объявляем rxMethod как независимую константу
     const loadAll = rxMethod<void>(
       pipe(
         tap(() => patchState(store, { isLoading: true })),
         switchMap(() =>
-          service.getArticles().pipe(
+          service.getQuestions().pipe(
             tap({
               next: (data) =>
-                patchState(store, { articles: data, isLoading: false }),
+                patchState(store, { questions: data, isLoading: false }),
               error: () => patchState(store, { isLoading: false }),
             })
           )
@@ -60,12 +60,12 @@ export const KnowledgeBaseStore = signalStore(
       // Экспортируем наш метод загрузки
       loadAll,
 
-      // Внутри addArticle теперь можно безопасно вызывать loadAll
-      addArticle: rxMethod<Omit<Article, 'id'>>(
+      // Внутри addQuestion теперь можно безопасно вызывать loadAll
+      addQuestion: rxMethod<Omit<Question, 'id'>>(
         pipe(
           tap(() => patchState(store, { isLoading: true })),
-          switchMap((newArticle) =>
-            service.addArticle(newArticle).pipe(
+          switchMap((newQuestion) =>
+            service.addQuestion(newQuestion).pipe(
               tap({
                 next: () => {
                   // Вызываем локальную константу, TypeScript гарантированно увидит тип

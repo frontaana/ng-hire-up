@@ -13,15 +13,15 @@ export const knowledgeBaseRoutes: Routes = [
       {
         path: 'list',
         loadComponent: () =>
-          import('./components/article-list/article-list.component').then(
-            (m) => m.ArticleListComponent
+          import('./components/question-list/question-list.component').then(
+            (m) => m.QuestionListComponent
           ),
       },
       {
         path: 'add',
         loadComponent: () =>
-          import('./components/article-form/article-form.component').then(
-            (m) => m.ArticleFormComponent
+          import('./components/question-form/question-form.component').then(
+            (m) => m.QuestionFormComponent
           ),
       },
     ],
