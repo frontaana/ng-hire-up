@@ -10,7 +10,7 @@ import { rxMethod } from '@ngrx/signals/rxjs-interop'; // Обязательно
 import { pipe, switchMap, tap } from 'rxjs';
 
 import { Difficulty, Question, Technology } from '../models/question';
-import { QuestionsService } from '../services/questions.service';
+import { QuestionService } from '../services/question.service';
 
 export const KnowledgeBaseStore = signalStore(
   { providedIn: 'root' },
@@ -31,7 +31,7 @@ export const KnowledgeBaseStore = signalStore(
       );
     }),
   })),
-  withMethods((store, service = inject(QuestionsService)) => {
+  withMethods((store, service = inject(QuestionService)) => {
     // 1. Сначала объявляем rxMethod как независимую константу
     const loadAll = rxMethod<void>(
       pipe(

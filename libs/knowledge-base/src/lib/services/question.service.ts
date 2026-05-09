@@ -5,7 +5,7 @@ import { Question } from '../models/question'; // Твои модели
 import { KNOWLEDGE_BASE_URL } from './api-url.token'; // Токен из текущей либы
 
 @Injectable({ providedIn: 'root' })
-export class QuestionsService extends ItemsService {
+export class QuestionService extends ItemsService {
   // Получаем базовый URL из DI-токена, который прокинул проект app
   private readonly baseUrl = inject(KNOWLEDGE_BASE_URL);
 
