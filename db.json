@@ -69,16 +69,6 @@
       "technology": "Angular",
       "topic": "injection",
       "difficulty": "Senior"
-    },
-    {
-      "id": "6",
-      "title": "Виды декораторов",
-      "answer": "",
-      "description": "Вопрос по видам декораторов",
-      "company": "none",
-      "technology": "Angular",
-      "topic": "decorators",
-      "difficulty": "junior"
     }
   ],
   "tasks": [
