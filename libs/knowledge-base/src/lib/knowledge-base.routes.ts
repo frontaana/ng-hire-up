@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { KnowledgeBaseComponent } from './components/knowledge-base/knowledge-base.component';
 import { KnowledgeBaseStore } from './store/knowledge-base.store';
 
-export const knowledgeBaseRoutes: Routes = [
+export const KNOWLEDGE_BASE_ROUTES: Routes = [
   {
     path: '',
     component: KnowledgeBaseComponent,
