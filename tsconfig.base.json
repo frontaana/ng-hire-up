@@ -12,11 +12,9 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@ng-highcharts/interview-tools": ["libs/interview-tools/src/index.ts"],
       "@ng-highcharts/knowledge-base": ["libs/knowledge-base/src/index.ts"],
       "@ng-highcharts/shared": ["libs/shared/src/index.ts"],
-      "@ng-highcharts/todo-tracker": ["libs/todo-tracker/src/index.ts"],
-      "@ng-highcharts/tracker": ["libs/tracker/src/index.ts"],
-      "@ng-highcharts/training": ["libs/training/src/index.ts"]
     }
   }
 }

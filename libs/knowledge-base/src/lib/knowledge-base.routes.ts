@@ -12,6 +12,7 @@ export const KNOWLEDGE_BASE_ROUTES: Routes = [
       { path: '', redirectTo: 'list', pathMatch: 'full' },
       {
         path: 'list',
+        title: 'Hire-Up | База вопросов',
         loadComponent: () =>
           import('./components/question-list/question-list.component').then(
             (m) => m.QuestionListComponent

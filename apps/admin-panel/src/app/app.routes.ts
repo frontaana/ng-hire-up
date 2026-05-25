@@ -9,12 +9,12 @@ export const appRoutes: Routes = [
         (m) => m.DashboardComponent
       ),
   },
-  {
-    path: 'knowledge',
-    // Вместо loadComponent используем loadChildren для подтягивания всех маршрутов либы
-    loadChildren: () =>
-      import('@ng-highcharts/knowledge-base').then(
-        (m) => m.knowledgeBaseRoutes
-      ),
-  },
+  // {
+  //   path: 'knowledge',
+  //   // Вместо loadComponent используем loadChildren для подтягивания всех маршрутов либы
+  //   loadChildren: () =>
+  //     import('@ng-highcharts/knowledge-base').then(
+  //       (m) => m.knowledgeBaseRoutes
+  //     ),
+  // },
 ];
