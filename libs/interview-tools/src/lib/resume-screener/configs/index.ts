@@ -1,4 +1,4 @@
-export * from './criteria.config';
+export * from '../../../../../shared/src/lib/models/criteria.models';
 
 export * from './about-criteria.config';
 export * from './education-criteria.config';

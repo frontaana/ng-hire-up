@@ -1,18 +1,214 @@
-:host {
+/* Двухколоночный макет страницы */
+.screener-grid {
+  display: grid;
+  grid-template-columns: 1fr 450px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* Левая колонка: Просмотр PDF */
+.pdf-container {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  min-height: 800px;
   display: flex;
-  flex: 1;
+  align-items: center;
+  justify-content: center;
 }
 
-.pdf,
-.analytics {
-  width: 50%;
+.pdf-viewer-placeholder {
+  text-align: center;
+  color: #94a3b8;
+}
+
+.pdf-viewer-placeholder i {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+/* Правая колонка: Столбик аналитики */
+.analytics-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 1. Зона: Загрузить другое резюме (Пунктирная рамка) */
+.zone-upload-another {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 2px dashed #3b82f6;
+  /* Синий пунктир */
+  border-radius: 12px;
+  background: #eff6ff;
+  color: #2563eb;
+  cursor: pointer;
+  font-weight: 600;
+  gap: 8px;
+  transition: background 0.2s ease;
+}
+
+.zone-upload-another:hover {
+  background: #dbeafe;
+}
+
+/* 2. Зона: Общий результат скоринга */
+.zone-score-card {
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.score-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.score-percentage {
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.progress-bar-bg {
+  background: #f1f5f9;
+  height: 8px;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  background: #2563eb;
   height: 100%;
+  border-radius: 9999px;
+  transition: width 0.4s ease-out;
 }
 
-.pdf {
-  background-color: lightcoral;
+/* 3-8. Зоны: Карточки разделов критериев */
+.zone-section-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
 }
 
-.analytics {
-  background-color: lightgreen;
+.zone-section-card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.section-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-title-group h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.section-meta-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Статусы-бейджи (Ошибки / Рекомендации) */
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-badge.error {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.status-badge.warning {
+  background: #ffedd5;
+  color: #d97706;
+}
+
+.status-badge.success {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+/* Стрелочка раскрытия */
+.icon-chevron {
+  transition: transform 0.2s ease;
+}
+
+.icon-chevron.rotated {
+  transform: rotate(180px);
+  /* Или анимируй через смену класса иконки */
+}
+
+/* Контент раскрытого списка критериев */
+.section-content {
+  border-top: 1px solid #f1f5f9;
+  padding: 16px;
+  background: #fafafa;
+}
+
+.criteria-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.criterion-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+/* Цвета иконок конкретных критериев */
+.criterion-item.success i {
+  color: #16a34a;
+}
+
+.criterion-item.warning i {
+  color: #ea580c;
+}
+
+.criterion-item.error i {
+  color: #dc2626;
+}
+
+.criterion-text {
+  color: #334155;
 }

@@ -1,2 +1,70 @@
-<div class="pdf"></div>
-<div class="analytics"></div>
+<div class="screener-grid">
+  
+  <!-- Левая колонка: Просмотр PDF -->
+  <div class="pdf-container">
+    <!-- Сюда встроится твой pdfjs-dist или iframe -->
+    <div class="pdf-viewer-placeholder">
+      <i class="icon-file-text"></i>
+      <p>Отображение загруженного PDF резюме</p>
+    </div>
+  </div>
+
+  <!-- Правая колонка: Столбик аналитики -->
+  <div class="analytics-container">
+    
+    <!-- 1. Зона: Загрузить другое резюме (Пунктирная рамка) -->
+    <div class="zone-upload-another">
+      <i class="icon-download"></i>
+      <span>Загрузить другое резюме</span>
+    </div>
+
+    <!-- Зона 2: Результат скоринга теперь берет данные из computed сигнала scoreMetrics() -->
+    <div class="zone-score-card">
+      <div class="score-header">
+        <span class="score-title">{{ scoreMetrics().text }}</span>
+        <span class="score-percentage">{{ scoreMetrics().percentage }}%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" [style.width.%]="scoreMetrics().percentage"></div>
+      </div>
+    </div>
+
+    <!-- Зоны 3-8: Цикл разделов -->
+    @for (section of sections(); track section.id) {
+      <!-- Проверяем равенство сигналов: развернута ли именно эта карточка -->
+      <div class="zone-section-card" [class.expanded]="expandedSectionId() === section.id">
+        
+        <!-- Передаем ID раздела в метод переключения -->
+        <div class="section-header" (click)="toggleSection(section.id)">
+          <div class="section-title-group">
+            <i class="section-icon" [ngClass]="section.icon"></i>
+            <h3>{{ section.name }}</h3>
+          </div>
+          
+          <div class="section-meta-group">
+            <span class="status-badge" [ngClass]="section.statusType">
+              {{ section.statusText }}
+            </span>
+            <!-- Поворачиваем стрелочку, если этот ID активен -->
+            <i class="icon-chevron" [class.rotated]="expandedSectionId() === section.id"></i>
+          </div>
+        </div>
+
+        <!-- Показываем контент, если ID совпадает -->
+        @if (expandedSectionId() === section.id) {
+          <div class="section-content">
+            <ul class="criteria-list">
+              @for (criterion of section.criteria; track criterion.id) {
+                <li class="criterion-item" [ngClass]="criterion.status">
+                  <i class="criterion-icon" [ngClass]="criterion.icon"></i>
+                  <span class="criterion-text">{{ criterion.text }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+        }
+      </div>
+    }
+    
+  </div>
+</div>

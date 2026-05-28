@@ -1,5 +1,5 @@
-export type CriterionSeverity = 'critical' | 'minor';
-export type CriterionStatus = 'success' | 'warning' | 'error';
+type CriterionSeverity = 'critical' | 'minor';
+type CriterionStatus = 'success' | 'warning' | 'error';
 
 // Интерфейс конфигурации самого пункта в справочнике
 export interface CriterionDefinition {
@@ -10,6 +10,9 @@ export interface CriterionDefinition {
   textFail: string;            // Текст 2 (когда нашли несоответствие)
 }
 
+/**
+ * TODO integrate EvaluationUiState and CriterionResult
+ */
 // Интерфейс для UI-отображения (цвета и иконки)
 export interface EvaluationUiState {
   status: CriterionStatus;

@@ -1,4 +1,4 @@
-import { CriterionDefinition } from "./criteria.config";
+import { CriterionDefinition } from "@ng-hire-up/shared";
 
 export const JOB_CRITERIA_REGISTRY: Record<string, CriterionDefinition> = {
   stackInTitle: {
