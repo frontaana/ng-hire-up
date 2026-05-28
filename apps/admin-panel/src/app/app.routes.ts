@@ -13,7 +13,7 @@ export const appRoutes: Routes = [
   //   path: 'knowledge',
   //   // Вместо loadComponent используем loadChildren для подтягивания всех маршрутов либы
   //   loadChildren: () =>
-  //     import('@ng-highcharts/knowledge-base').then(
+  //     import('@ng-hire-up/knowledge-base').then(
   //       (m) => m.knowledgeBaseRoutes
   //     ),
   // },

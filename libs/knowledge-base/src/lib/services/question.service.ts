@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { ItemsService } from '@ng-highcharts/shared'; // Твой алиас на shared
+import { ItemsService } from '@ng-hire-up/shared'; // Твой алиас на shared
 import { map, Observable } from 'rxjs';
 import { Question } from '../models/question'; // Твои модели
 import { KNOWLEDGE_BASE_URL } from './api-url.token'; // Токен из текущей либы

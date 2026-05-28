@@ -12,9 +12,9 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ng-highcharts/interview-tools": ["libs/interview-tools/src/index.ts"],
-      "@ng-highcharts/knowledge-base": ["libs/knowledge-base/src/index.ts"],
-      "@ng-highcharts/shared": ["libs/shared/src/index.ts"]
+      "@ng-hire-up/interview-tools": ["libs/interview-tools/src/index.ts"],
+      "@ng-hire-up/knowledge-base": ["libs/knowledge-base/src/index.ts"],
+      "@ng-hire-up/shared": ["libs/shared/src/index.ts"]
     }
   }
 }

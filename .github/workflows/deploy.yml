@@ -16,7 +16,6 @@ concurrency:
 
 jobs:
   build-and-deploy:
-    # 1. Исправляет ошибку "Missing environment"
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -24,7 +23,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 2. Обновленные версии экшенов (v5+), которые сами работают на Node 24
       - name: Checkout code
         uses: actions/checkout@v5
 
@@ -38,7 +36,7 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Build Angular Project
-        run: npx nx build admin-panel --prod --base-href /ng-highcharts/
+        run: npx nx build hire-up --configuration=production --base-href /ng-hire-up/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -46,7 +44,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/apps/admin-panel/browser
+          path: dist/apps/hire-up/browser
 
       - name: Deploy to GitHub Pages
         id: deployment

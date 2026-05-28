@@ -1,5 +1,5 @@
 {
-  "name": "ng-highcharts",
+  "name": "ng-hire-up",
   "version": "0.0.0",
   "scripts": {
     "start": "nx serve hire-up",
@@ -9,7 +9,7 @@
     "help": "nx help",
     "server": "json-server --watch db.json --port 3000 --host localhost",
     "start:all": "concurrently \"npx nx serve hire-up\" \"npm run server\"",
-    "build:prod": "npx nx build hire-up --configuration=production --base-href /ng-highcharts/",
+    "build:prod": "npx nx build hire-up --configuration=production --base-href /ng-hire-up/",
     "deploy": "npm run build:prod && npx gh-pages -d dist/apps/hire-up/browser"
   },
   "private": true,

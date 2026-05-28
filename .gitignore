@@ -48,6 +48,7 @@ testem.log
 .DS_Store
 Thumbs.db
 .env.local
+README_copy.md
 
 # angular
 *.local.ts

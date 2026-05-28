@@ -2,7 +2,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
-import { KNOWLEDGE_BASE_URL } from '@ng-highcharts/knowledge-base';
+import { KNOWLEDGE_BASE_URL } from '@ng-hire-up/knowledge-base';
 import { withNgxsReduxDevtoolsPlugin } from '@ngxs/devtools-plugin'; // Разработчики NGXS добавили слово Redux,
 import { provideStore } from '@ngxs/store';
 import { environment } from '../environments/environment';

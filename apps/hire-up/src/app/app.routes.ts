@@ -8,15 +8,15 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'knowledge-base',
-    loadChildren: () => import('@ng-highcharts/knowledge-base').then(m => m.KNOWLEDGE_BASE_ROUTES)
+    loadChildren: () => import('@ng-hire-up/knowledge-base').then(m => m.KNOWLEDGE_BASE_ROUTES)
   },
   {
     path: 'tools',
-    loadChildren: () => import('@ng-highcharts/interview-tools').then(m => m.INTERVIEW_TOOLS_ROUTES)
+    loadChildren: () => import('@ng-hire-up/interview-tools').then(m => m.INTERVIEW_TOOLS_ROUTES)
   }
   // {
   //   path: 'tools',
   //   loadChildren: () => 
-  //     import('@ng-highcharts/interview-tools').then(m => m.INTERVIEW_TOOLS_ROUTES)
+  //     import('@ng-hire-up/interview-tools').then(m => m.INTERVIEW_TOOLS_ROUTES)
   // }
 ];

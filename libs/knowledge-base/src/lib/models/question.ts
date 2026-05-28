@@ -1,4 +1,4 @@
-import { IdentifiedEntity } from '@ng-highcharts/shared';
+import { IdentifiedEntity } from '@ng-hire-up/shared';
 
 export enum Company {
   none = 'none',
