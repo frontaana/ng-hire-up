@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { InterviewToolsComponent } from './interview-tools.component';
+import { MainDashboardComponent } from './main-dashboard.component';
 
-describe('InterviewToolsComponent', () => {
-  let component: InterviewToolsComponent;
-  let fixture: ComponentFixture<InterviewToolsComponent>;
+describe('MainDashboardComponent', () => {
+  let component: MainDashboardComponent;
+  let fixture: ComponentFixture<MainDashboardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InterviewToolsComponent],
+      imports: [MainDashboardComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(InterviewToolsComponent);
+    fixture = TestBed.createComponent(MainDashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

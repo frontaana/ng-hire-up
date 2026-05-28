@@ -6,19 +6,23 @@ export const INTERVIEW_TOOLS_ROUTES: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'resume-screener',
-        pathMatch: 'full',
-      },
-      {
-        path: 'resume-screener',
-        title: 'Hire-Up | Скрининг резюме',
-        loadComponent: () => import('./resume-screener/resume-screener.component').then((m) => m.ResumeScreenerComponent),
-      },
-      {
-        path: 'mock-interview',
-        title: 'Hire-Up | Мок-интервью',
-        loadComponent: () => import('./mock-interview/mock-interview.component').then((m) => m.MockInterviewComponent),
+        loadComponent: () => import('./main-dashboard/main-dashboard.component').then((m) => m.MainDashboardComponent),
       }
+      // {
+      //   path: '',
+      //   redirectTo: 'resume-screener',
+      //   pathMatch: 'full',
+      // },
+      // {
+      //   path: 'resume-screener',
+      //   title: 'Hire-Up | Скрининг резюме',
+      //   loadComponent: () => import('./resume-screener/resume-screener.component').then((m) => m.ResumeScreenerComponent),
+      // },
+      // {
+      //   path: 'mock-interview',
+      //   title: 'Hire-Up | Мок-интервью',
+      //   loadComponent: () => import('./mock-interview/mock-interview.component').then((m) => m.MockInterviewComponent),
+      // }
     ]
   },
 
