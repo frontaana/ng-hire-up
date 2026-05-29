@@ -7,7 +7,7 @@ export class ItemsService {
   private http = inject(HttpClient);
 
   getItems(url: string): Observable<any[]> {
-    console.log('ItemsService getItems', url);
+
     return this.http.get<any[]>(url).pipe(
       map((res) => {
         if (!res) return [];

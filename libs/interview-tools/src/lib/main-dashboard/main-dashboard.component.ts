@@ -35,7 +35,6 @@ export class MainDashboardComponent {
     while (route.firstChild) {
       route = route.firstChild;
     }
-    console.log('route', route.title, route);
     
     // Возвращаем title текущего роута
     return route.title || 'Hire-Up | Карьерный ассистент';

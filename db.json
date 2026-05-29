@@ -61,7 +61,7 @@
       "id": "ZTtpaGYHvO0"
     },
     {
-      "id": "5",
+      "id": "7",
       "title": "@SkipSelf / @Self?",
       "answer": "@SkipSelf говорит пропусти текущий сервис ищи выше до рута, тк нам нужен инстанс сервиса parent компонента который выше",
       "description": "Вопрос по @SkipSelf / @Self",

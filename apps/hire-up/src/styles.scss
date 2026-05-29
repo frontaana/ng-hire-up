@@ -1,3 +1,20 @@
+// 1. Подгружаем иконки, которые мы успешно починили
+@use '@angular/material' as mat;
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+
+// 2. Инициализируем ядро и тему Angular 20 (активирует переменные --mat-sys-*)
+@include mat.core();
+
+html {
+  @include mat.theme((color: (primary: mat.$azure-palette,
+        theme-type: light),
+      typography: (brand-family: 'Roboto, sans-serif',
+        plain-family: 'system-ui, sans-serif'
+      )));
+}
+
+// 3. Твои базовые стили структуры приложения
 html,
 body {
   height: 100%;
@@ -6,13 +23,12 @@ body {
 
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  // Используем системную переменную фона из Material 3
+  // Теперь эти переменные гарантированно определятся в браузере!
   background-color: var(--mat-sys-surface);
-  background-color: #f5f5f5;
+  background-color: #f5f5f5; // Твой фолбек-цвет фона
   color: var(--mat-sys-on-surface);
 }
 
-// Корневой тег приложения
 app-root {
   display: block;
   height: 100%;
@@ -22,4 +38,9 @@ app-root {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+// 4. Фикс высоты для форм, который искал браузер
+:root {
+  --mat-form-field-container-height: 56px;
 }

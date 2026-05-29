@@ -10,12 +10,6 @@
       "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/hire-up",
-        "index": "apps/hire-up/src/index.html",
-        "browser": "apps/hire-up/src/main.ts",
-        "polyfills": ["zone.js"],
-        "tsConfig": "apps/hire-up/tsconfig.app.json",
-        "inlineStyleLanguage": "scss",
         "assets": [
           "apps/hire-up/src/assets",
           {
@@ -24,8 +18,14 @@
             "output": "/"
           }
         ],
+        "browser": "apps/hire-up/src/main.ts",
+        "index": "apps/hire-up/src/index.html",
+        "inlineStyleLanguage": "scss",
+        "outputPath": "dist/apps/hire-up",
+        "polyfills": ["zone.js"],
         "styles": ["apps/hire-up/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "tsConfig": "apps/hire-up/tsconfig.app.json"
       },
       "configurations": {
         "production": {
@@ -58,7 +58,8 @@
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
       "options": {
-        "buildTarget": "hire-up:build:development"
+        "buildTarget": "hire-up:build:development",
+        "proxyConfig": "proxy.conf.json"
       },
       "configurations": {
         "production": {

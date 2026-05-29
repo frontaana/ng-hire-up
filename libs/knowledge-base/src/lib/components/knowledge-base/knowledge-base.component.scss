@@ -6,30 +6,18 @@
   overflow: hidden; // Сам тулбар жестко зафиксирован и не скроллится
 }
 
-.logo {
-  margin: 0;
-  white-space: nowrap; // Логотип не должен сжиматься
-  flex-shrink: 0;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-
-  &-icon {
-    color: #7fff00;
-  }
-}
-
-
 // Контейнер-ограничитель для скролла
 .menu-items-scroll-container {
   flex: 1; // Занимает всё доступное пространство между логотипом и настройками
   overflow: hidden;
   display: flex;
   align-items: center;
-  background-color: #7fff00;
   border-radius: var(--mdc-text-button-container-shape, var(--mat-app-corner-full));
   padding: 0 4px;
+}
+
+.menu-item {
+  background-color: #7fff00;
 }
 
 // Cкролл
