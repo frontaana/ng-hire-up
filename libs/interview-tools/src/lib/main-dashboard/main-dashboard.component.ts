@@ -24,19 +24,20 @@ export class MainDashboardComponent {
 
   // 2. Вычисляем текущий title дочернего роута на основе изменения навигации
   readonly currentTitle = computed(() => {
-  // 1. Просто читаем значение сигнала (без вызова как функции, если TS ругается, 
-  // либо сохраняем в переменную, чтобы Angular зарегистрировал зависимость)
-  const _trigger = this.navigationEnd; 
+    // 1. Просто читаем значение сигнала (без вызова как функции, если TS ругается, 
+    // либо сохраняем в переменную, чтобы Angular зарегистрировал зависимость)
+    const _trigger = this.navigationEnd(); 
 
-  // 2. Начинаем обход дерева роутов с самого корня
-  let route = this.router.routerState.snapshot.root;
-  
-  // Спускаемся до самого глубокого активного дочернего маршрута
-  while (route.firstChild) {
-    route = route.firstChild;
-  }
-
-  // Возвращаем title текущего роута
-  return route.title || 'Hire-Up | Карьерный ассистент';
+    // 2. Начинаем обход дерева роутов с самого корня
+    let route = this.router.routerState.snapshot.root;
+    
+    // Спускаемся до самого глубокого активного дочернего маршрута
+    while (route.firstChild) {
+      route = route.firstChild;
+    }
+    console.log('route', route.title, route);
+    
+    // Возвращаем title текущего роута
+    return route.title || 'Hire-Up | Карьерный ассистент';
   });
 }
