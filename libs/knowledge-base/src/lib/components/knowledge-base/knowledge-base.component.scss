@@ -48,3 +48,8 @@
     flex-shrink: 0; // Кнопки сохраняют свой оригинальный размер и не сжимаются
   }
 }
+
+.mdc-button.active-link,
+.mdc-button:hover {
+  background-color: #7fff00;
+}

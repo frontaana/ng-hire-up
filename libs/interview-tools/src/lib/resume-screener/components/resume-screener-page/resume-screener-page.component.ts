@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { ABOUT_CRITERIA_REGISTRY, EDUCATION_CRITERIA_REGISTRY, EXPERIENCE_CRITERIA_REGISTRY, HEADER_CRITERIA_REGISTRY, JOB_CRITERIA_REGISTRY, SKILLS_CRITERIA_REGISTRY } from '../../configs';
 
 // Импортируем наши справочники по разделам из shared
@@ -25,7 +26,7 @@ interface SectionUiUiCard {
 @Component({
   selector: 'lib-resume-screener-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatIconModule],
   templateUrl: './resume-screener-page.component.html',
   styleUrl: './resume-screener-page.component.scss',
 })

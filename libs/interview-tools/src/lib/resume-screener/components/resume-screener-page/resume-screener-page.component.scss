@@ -41,11 +41,10 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  border: 2px dashed #3b82f6;
-  /* Синий пунктир */
   border-radius: 12px;
-  background: #eff6ff;
-  color: #2563eb;
+  background: #f8fafc;
+  border: 2px dashed #cbd5e1;
+  color: #94a3b8;
   cursor: pointer;
   font-weight: 600;
   gap: 8px;
@@ -53,7 +52,9 @@
 }
 
 .zone-upload-another:hover {
-  background: #dbeafe;
+  background: #7fff00;
+  color: #0f172a;
+  border: 2px dashed #0f172a;
 }
 
 /* 2. Зона: Общий результат скоринга */

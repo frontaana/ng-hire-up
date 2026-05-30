@@ -35,8 +35,7 @@
   gap: 8px;
   border-bottom: 2px solid #e2e8f0;
   /* Slate 200 */
-  margin-bottom: 32px;
-  padding-bottom: 2px;
+  margin-bottom: 24px;
 }
 
 /* Стили вкладок (ссылок) */
@@ -51,10 +50,10 @@
   /* Slate 500 */
   text-decoration: none;
   border-bottom: 2px solid transparent;
-  margin-bottom: -4px;
+  margin-bottom: 10px;
   /* Перекрываем border навигации */
   transition: all 0.2s ease-in-out;
-  border-radius: 6px 6px 0 0;
+  border-radius: 25px;
 }
 
 /* Ховер на вкладки */
@@ -67,12 +66,9 @@
 
 /* Активное состояние вкладки (класс вешается через routerLinkActive) */
 .tabs-navigation a.active {
-  color: #2563eb;
-  /* Blue 600 */
-  border-bottom-color: #2563eb;
-  /* Синяя линия снизу */
-  background-color: #eff6ff;
-  /* Очень легкий синий фон */
+  color: #0f172a;
+  border-bottom-color: #7fff00;
+  background-color: #7fff00;
 }
 
 /* Контентная область */
